@@ -2,11 +2,10 @@ package com.example.contactsblocker.di.module
 
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
-import com.example.contactsblocker.CitiesDao
+import com.example.contactsblocker.ContactsDao
 import com.example.contactsblocker.di.scope.ActivityScoped
 import com.example.contactsblocker.module.home.HomeViewModel
 import com.example.contactsblocker.module.home.HomeViewModelFactory
-import com.example.contactsblocker.service.ApiService
 import dagger.Module
 import dagger.Provides
 
@@ -20,7 +19,7 @@ class HomeModule(private val activity: FragmentActivity) {
 
     @ActivityScoped
     @Provides
-    fun provideHomeViewModelFactory(): HomeViewModelFactory{
-        return HomeViewModelFactory();
+    fun provideHomeViewModelFactory(contactsDao: ContactsDao): HomeViewModelFactory{
+        return HomeViewModelFactory(contactsDao);
     }
 }

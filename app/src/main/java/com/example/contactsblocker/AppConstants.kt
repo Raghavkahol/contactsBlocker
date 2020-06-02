@@ -5,6 +5,6 @@ object AppConstants {
     const val ONE_INT = 1
     const val TWO_INT = 2
     const val EMPTY_STRING = ""
-    const val URL = "url"
+    const val ID = "id"
     const val COMMA = ","
 }

@@ -3,22 +3,23 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="wrap_content" xmlns:tools="http://schemas.android.com/tools"
         android:background="@color/white">
 
     <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.7"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:ellipsize="end"
             android:textSize="@dimen/font_size_medium"
-            android:paddingTop="@dimen/spacing_medium"
-            android:paddingBottom="@dimen/spacing_medium"
-            android:layout_marginStart="@dimen/spacing_medium"
+            android:maxLines="1"
+            android:padding="@dimen/spacing_medium"
             android:textColor="@color/dark_gray"
     />
+
     <View
             android:id="@+id/line1"
             android:layout_width="match_parent"

@@ -4,7 +4,7 @@
     <string name="label_remove_city">Remove City</string>
     <string name="label_detail">Details</string>
     <string name="label_name">NAME</string>
-    <string name="label_province">PROVINCE</string>
+    <string name="label_number">NUMBER</string>
     <string name="label_country">COUNTRY</string>
     <string name="label_timezone">TIMEZONE</string>
     <string name="label_population">POPULATION</string>
@@ -14,4 +14,10 @@
     <string name="label_search_cities">Search Cities</string>
     <string name="label_permission_denied">Permission Denied</string>
     <string name="label_block_list">Block List</string>
+    <string name="label_add">Add</string>
+    <string name="label_block">Block</string>
+    <string name="label_unblock">Unblock</string>
+    <string name="label_cancel">Cancel</string>
+    <string name="label_add_to_block_list">Block Number</string>
+    <string name="hint_block_number">Add number here</string>
 </resources>

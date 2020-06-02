@@ -1,7 +1,8 @@
 package com.example.contactsblocker.di.component
 
 import android.content.Context
-import com.example.contactsblocker.CitiesDao
+import com.example.contactsblocker.ContactsDao
+import com.example.contactsblocker.contactsDB
 import com.example.contactsblocker.di.module.ApplicationModule
 import com.example.contactsblocker.di.qualifier.ApplicationContext
 import com.example.contactsblocker.di.scope.ApplicationScoped
@@ -16,7 +17,7 @@ interface ApplicationComponent {
 
     val apiService : ApiService
 
-   // fun getKeepTruckinDataBase(): KeepTruckinDB
+    fun getContactsDataBase(): contactsDB
 
-   // fun getCitiesDao(): CitiesDao
+    fun getContactsDao(): ContactsDao
 }

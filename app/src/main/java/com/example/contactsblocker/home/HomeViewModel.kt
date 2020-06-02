@@ -7,30 +7,49 @@ import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import com.example.contactsblocker.AppConstants
 import com.example.contactsblocker.BaseViewModel
-import com.example.contactsblocker.CitiesDao
+import com.example.contactsblocker.ContactsDao
 import com.example.contactsblocker.ViewModelLifecycleState
-import com.example.contactsblocker.model.CityDetail
+import com.example.contactsblocker.model.Contact
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 
-class HomeViewModel() : BaseViewModel() {
+class HomeViewModel(private val contactsDao: ContactsDao) : BaseViewModel() {
 
 
-    var contacts = ObservableArrayList<CityDetail>()
+    var contacts = ObservableArrayList<Contact>()
     var isDataUnavalable = MutableLiveData<Boolean>().apply { false }
 
 
     fun getAllContacts(contentResolver : ContentResolver) {
-        val phoneList = arrayListOf<String>()
-        val nameList = arrayListOf<CityDetail>()
+        bindDisposable {
+            contactsDao.contactsCount()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    if(it==AppConstants.ZERO_INT) {
+                       fetchContactsFromDevice(contentResolver)
+                    } else {
+                        getContactsFromDB()
+                    }
+                }, {
+                    it.printStackTrace()
+                })
+        }
+
+    }
+
+    fun fetchContactsFromDevice(contentResolver: ContentResolver) {
+        val nameList = arrayListOf<Contact>()
         val cr: ContentResolver = contentResolver
         val cur : Cursor? = cr.query(ContactsContract.Contacts.CONTENT_URI,
-        null, null, null, null);
+            null, null, null, null);
         if (cur?.getCount() != 0) {
             while (cur?.moveToNext() == true) {
-             val id : String = cur.getString(
+                val id : String = cur.getString(
                     cur.getColumnIndex(ContactsContract.Contacts._ID));
-            val name : String = cur.getString(cur.getColumnIndex(
-                ContactsContract.Contacts.DISPLAY_NAME));
+                val name : String = cur.getString(cur.getColumnIndex(
+                    ContactsContract.Contacts.DISPLAY_NAME));
                 if (cur.getInt(
                         cur.getColumnIndex(
                             ContactsContract.Contacts.HAS_PHONE_NUMBER
@@ -42,25 +61,57 @@ class HomeViewModel() : BaseViewModel() {
                         null,
                         ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?", arrayOf(id), null
                     )
+                    var phoneNo : String? = null
+                    //Just take one number
                     while (pCur?.moveToNext() == true) {
-                        val phoneNo = pCur.getString(
+                        phoneNo = pCur.getString(
                             pCur.getColumnIndex(
                                 ContactsContract.CommonDataKinds.Phone.NUMBER
                             )
                         )
-                        phoneList.add(phoneNo)
+                        break
                     }
-                    val cityDetail : CityDetail = CityDetail()
-                    cityDetail.name = name
-                    cityDetail.number = phoneList
-                    nameList.add(cityDetail)
+                    val contact : Contact = Contact()
+                    contact.name = name
+                    contact.number = phoneNo
+                    nameList.add(contact)
                     pCur?.close()
                 }
 
-        }
+            }
             contacts.addAll(nameList)
+            insertInDB(nameList)
         }
         cur?.close();
+    }
+
+    private fun getContactsFromDB() {
+        bindDisposable {
+            contactsDao.getcontactListFromDB()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    with(contacts) {
+                        clear()
+                        addAll(it)
+                    }
+                }, {
+                    it.printStackTrace()
+                })
+        }
+    }
+
+    private fun insertInDB(nameList: ArrayList<Contact>) {
+        bindDisposable {
+            contactsDao.insertContacts(nameList)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+
+                }, {
+                    it.printStackTrace()
+                })
+        }
     }
 
     fun openCitySearchActivity() {

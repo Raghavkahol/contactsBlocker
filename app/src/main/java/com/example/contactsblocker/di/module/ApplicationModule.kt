@@ -2,6 +2,7 @@ package com.example.contactsblocker.di.module
 
 import android.content.Context
 import androidx.room.Room
+import com.example.contactsblocker.ContactsDao
 import com.example.contactsblocker.contactsDB
 import com.example.contactsblocker.di.qualifier.ApplicationContext
 import com.example.contactsblocker.di.scope.ApplicationScoped
@@ -17,10 +18,10 @@ class ApplicationModule {
             .fallbackToDestructiveMigration()
             .build()
     }
-//
-//    @Provides
-//    @ApplicationScoped
-//    internal fun provideCitiesDao(db: KeepTruckinDB): CitiesDao {
-//       // return db.citiesDao
-//    }
+
+    @Provides
+    @ApplicationScoped
+    internal fun provideContactsDao(db: contactsDB): ContactsDao {
+       return db.contactsDao
+    }
 }

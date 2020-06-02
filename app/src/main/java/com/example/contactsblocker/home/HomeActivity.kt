@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.contactsblocker.*
 import com.example.contactsblocker.di.component.DaggerHomeComponent
 import com.example.contactsblocker.di.module.HomeModule
-import com.example.contactsblocker.model.CityDetail
+import com.example.contactsblocker.model.Contact
 import com.example.contactsblocker.module.home.citySearch.getCitySearchIntent
 import javax.inject.Inject
 
@@ -65,7 +65,7 @@ class HomeActivity : BaseViewModelActivity() {
             lifecycleOwner = this@HomeActivity
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(context)
-                adapter = HomeAdapter(context, ArrayList<CityDetail>())
+                adapter = HomeAdapter(context, ArrayList<Contact>())
                 itemAnimator = DefaultItemAnimator()
                 addItemDecoration(DividerItemDecoration(this@HomeActivity, LinearLayoutManager.VERTICAL))
             }
