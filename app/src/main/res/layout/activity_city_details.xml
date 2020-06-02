@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+>
+    <data>
+        <import type="android.view.View"/>
+        <variable
+                name="viewModel"
+                type="com.example.contactsblocker.module.home.cityDetail.CityDetailViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="@dimen/spacing_zero"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navigationIcon="@drawable/ic_arrow_back_black">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_detail"
+                    android:textSize="@dimen/font_size_large"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.isInDB ? @string/label_remove_city : @string/label_add_city}"
+                    android:textSize="@dimen/font_size_medium"
+                    android:visibility="@{viewModel.isDataAvailable ? View.VISIBLE : View.GONE}"
+                    android:onClick="@{()->viewModel.updateDB()}"
+                    android:textColor="@color/white"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:text="@string/label_name"
+                android:textSize="@dimen/font_size_medium"
+                android:textColor="@color/colorPrimary"
+                android:visibility="@{viewModel.isDataAvailable ? View.VISIBLE : View.GONE}"
+                android:layout_marginStart="@dimen/spacing_medium"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/name_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/font_size_small"
+                android:text="@{viewModel.cityName}"
+                android:visibility="@{viewModel.isDataAvailable ? View.VISIBLE : View.GONE}"
+                android:textSize="@dimen/font_size_medium"
+                android:textColor="@color/dark_gray"
+                android:layout_marginStart="@dimen/spacing_medium"
+                app:layout_constraintTop_toBottomOf="@+id/name_label"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/province_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:text="@string/label_province"
+                android:textSize="@dimen/font_size_medium"
+                android:visibility="@{viewModel.isDataAvailable ? View.VISIBLE : View.GONE}"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginStart="@dimen/spacing_medium"
+                app:layout_constraintTop_toBottomOf="@+id/name_value"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/province_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/font_size_small"
+                android:text="@{viewModel.provinceName}"
+                android:textSize="@dimen/font_size_medium"
+                android:visibility="@{viewModel.isDataAvailable ? View.VISIBLE : View.GONE}"
+                android:textColor="@color/dark_gray"
+                android:layout_marginStart="@dimen/spacing_medium"
+                app:layout_constraintTop_toBottomOf="@+id/province_label"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/country_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:text="@string/label_country"
+                android:textSize="@dimen/font_size_medium"
+                android:visibility="@{viewModel.isDataAvailable ? View.VISIBLE : View.GONE}"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginStart="@dimen/spacing_medium"
+                app:layout_constraintTop_toBottomOf="@+id/province_value"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/country_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/font_size_small"
+                android:text="@{viewModel.countryValue}"
+                android:textSize="@dimen/font_size_medium"
+                android:visibility="@{viewModel.isDataAvailable ? View.VISIBLE : View.GONE}"
+                android:textColor="@color/dark_gray"
+                android:layout_marginStart="@dimen/spacing_medium"
+                app:layout_constraintTop_toBottomOf="@+id/country_label"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/timezone_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:text="@string/label_timezone"
+                android:textSize="@dimen/font_size_medium"
+                android:visibility="@{viewModel.isDataAvailable ? View.VISIBLE : View.GONE}"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginStart="@dimen/spacing_medium"
+                app:layout_constraintTop_toBottomOf="@+id/country_value"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/timezone_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/font_size_small"
+                android:text="@{viewModel.timeZone}"
+                android:textSize="@dimen/font_size_medium"
+                android:visibility="@{viewModel.isDataAvailable ? View.VISIBLE : View.GONE}"
+                android:textColor="@color/dark_gray"
+                android:layout_marginStart="@dimen/spacing_medium"
+                app:layout_constraintTop_toBottomOf="@+id/timezone_label"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/population_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:text="@string/label_population"
+                android:textSize="@dimen/font_size_medium"
+                android:visibility="@{viewModel.isDataAvailable ? View.VISIBLE : View.GONE}"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginStart="@dimen/spacing_medium"
+                app:layout_constraintTop_toBottomOf="@+id/timezone_value"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/population_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/font_size_small"
+                android:text="@{String.valueOf(viewModel.population)}"
+                android:textSize="@dimen/font_size_medium"
+                android:visibility="@{viewModel.isDataAvailable ? View.VISIBLE : View.GONE}"
+                android:textColor="@color/dark_gray"
+                android:layout_marginStart="@dimen/spacing_medium"
+                app:layout_constraintTop_toBottomOf="@+id/population_label"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.dataLoading? View.VISIBLE : View.GONE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
