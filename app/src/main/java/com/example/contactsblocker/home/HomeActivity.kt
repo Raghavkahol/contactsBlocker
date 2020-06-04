@@ -1,8 +1,11 @@
 package com.example.contactsblocker.module.home
 
+import android.Manifest
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -22,12 +25,22 @@ class HomeActivity : BaseViewModelActivity() {
     lateinit var homeViewModel: HomeViewModel
     lateinit var binding: com.example.contactsblocker.databinding.ActivityHomeBinding
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
         setupFragmentComponent()
         initComponents()
+        checkForPermissions()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun checkForPermissions() {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_CONTACTS)
+            == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_PHONE_STATE)
+            == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE)
+            == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ANSWER_PHONE_CALLS)
+            == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_CALL_LOG)
             == PackageManager.PERMISSION_GRANTED) {
             homeViewModel.getAllContacts(contentResolver);
         } else {
@@ -35,9 +48,14 @@ class HomeActivity : BaseViewModelActivity() {
         }
     }
 
+
+    @RequiresApi(Build.VERSION_CODES.O)
     fun requestPermission() {
-        if (ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf<String>(android.Manifest.permission.READ_CONTACTS), 1)
+        if (ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED
+            || ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_DENIED ||  ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_DENIED
+            ||  ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_DENIED
+            ||  ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.ANSWER_PHONE_CALLS) != PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(this, arrayOf<String>(android.Manifest.permission.READ_CONTACTS,Manifest.permission.READ_PHONE_STATE, Manifest.permission.CALL_PHONE, Manifest.permission.READ_CALL_LOG, Manifest.permission.ANSWER_PHONE_CALLS), 1)
         } else {
             homeViewModel.getAllContacts(contentResolver)
         }

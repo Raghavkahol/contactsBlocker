@@ -1,20 +1,13 @@
 package com.example.contactsblocker.module.home.citySearch
 
-import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Looper
 import android.text.InputType
 import android.view.View
 import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -24,24 +17,19 @@ import com.example.contactsblocker.AppConstants
 import com.example.contactsblocker.BaseViewModelActivity
 import com.example.contactsblocker.R
 import com.example.contactsblocker.databinding.ActivityBlockedContactsBinding
-import com.example.contactsblocker.di.component.DaggerCitySearchComponent
-import com.example.contactsblocker.di.module.CitySearchModule
-import com.example.contactsblocker.model.CitySearchResult
+import com.example.contactsblocker.di.component.DaggerBlockContactComponent
+import com.example.contactsblocker.di.module.BlockContactModule
 import com.example.contactsblocker.model.Contact
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationResult
-import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.activity_blocked_contacts.*
 import javax.inject.Inject
 
 
 fun getCitySearchIntent(context: Context): Intent {
-    val intent = Intent(context, CitySearchActivity::class.java)
+    val intent = Intent(context, BlockedListActivity::class.java)
     return intent
 }
 
-class CitySearchActivity : BaseViewModelActivity(), View.OnClickListener{
+class BlockedListActivity : BaseViewModelActivity(), View.OnClickListener{
     @Inject
     lateinit var blockedListViewModel: BlockedListViewModel
     lateinit var binding: ActivityBlockedContactsBinding
@@ -66,7 +54,7 @@ class CitySearchActivity : BaseViewModelActivity(), View.OnClickListener{
         }
         binding.apply{
            viewModel = blockedListViewModel
-            lifecycleOwner = this@CitySearchActivity
+            lifecycleOwner = this@BlockedListActivity
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter = CitySearchAdapter(context,ArrayList<Contact>())
@@ -84,9 +72,9 @@ class CitySearchActivity : BaseViewModelActivity(), View.OnClickListener{
     }
 
     override fun setupFragmentComponent() {
-        DaggerCitySearchComponent.builder()
+        DaggerBlockContactComponent.builder()
             .applicationComponent(AppApplication.getInstance()?.mComponent)
-            .citySearchModule(CitySearchModule(this))
+            .blockContactModule(BlockContactModule(this))
             .build().inject(this)
     }
 
@@ -99,7 +87,11 @@ class CitySearchActivity : BaseViewModelActivity(), View.OnClickListener{
         input.setHint(R.string.hint_block_number)
         builder.setView(input);
         builder.setPositiveButton(R.string.label_add){dialogInterface, which ->
-            blockedListViewModel.addToBlockList(input.getText().toString())
+            if(input.getText().length == AppConstants.NUMBER_SIZE) {
+                blockedListViewModel.addToBlockList(input.getText().toString())
+            } else {
+                Toast.makeText(this, " Please enter a valid 10 digit number", Toast.LENGTH_LONG).show()
+            }
         }
 
         builder.show();

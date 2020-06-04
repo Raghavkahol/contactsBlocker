@@ -3,7 +3,6 @@ package com.example.contactsblocker.module.home.cityDetail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.contactsblocker.ContactsDao
-import com.example.contactsblocker.service.ApiService
 
 class ContactDetailViewModelFactory(private val contactsDao: ContactsDao) : ViewModelProvider.NewInstanceFactory() {
 

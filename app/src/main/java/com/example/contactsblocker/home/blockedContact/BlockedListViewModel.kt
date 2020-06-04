@@ -18,7 +18,7 @@ class BlockedListViewModel(private val contactsDao: ContactsDao) : BaseViewModel
 
     fun fetchCityList() {
         bindDisposable {
-            contactsDao.getcontactList()
+            contactsDao.getBlockedContactListObservable()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
@@ -35,7 +35,8 @@ class BlockedListViewModel(private val contactsDao: ContactsDao) : BaseViewModel
     fun addToBlockList(number : String) {
         val contact = Contact()
         contact.name = number
-        contact.number = number
+        //For now, hardcoding +91 but can easily replace this with valid country code
+        contact.number = "+91"+number
         contact.isBlock = true
         bindDisposable {
             contactsDao.insertContact(contact)

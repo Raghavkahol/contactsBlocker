@@ -9,17 +9,17 @@ import com.example.contactsblocker.AppConstants
 import com.example.contactsblocker.BaseViewModelActivity
 import com.example.contactsblocker.R
 import com.example.contactsblocker.databinding.ActivityContactDetailsBinding
-import com.example.contactsblocker.di.component.DaggerCityDetailComponent
-import com.example.contactsblocker.di.module.CityDetailModule
+import com.example.contactsblocker.di.component.DaggerContactDetailComponent
+import com.example.contactsblocker.di.module.ContactDetailModule
 import javax.inject.Inject
 
 fun getContactDetailActivity(context: Context, cityName : Int?): Intent {
-    val intent  = Intent(context, CityDetailActivity::class.java)
+    val intent  = Intent(context, ContactDetailActivity::class.java)
     intent.putExtra(AppConstants.ID, cityName)
     return intent
 }
 
-class CityDetailActivity : BaseViewModelActivity() {
+class ContactDetailActivity : BaseViewModelActivity() {
     @Inject
     lateinit var contactDetailViewModel: ContactDetailViewModel
     lateinit var binding: ActivityContactDetailsBinding
@@ -40,14 +40,14 @@ class CityDetailActivity : BaseViewModelActivity() {
         }
        binding.apply {
            viewModel = contactDetailViewModel
-           lifecycleOwner = this@CityDetailActivity
+           lifecycleOwner = this@ContactDetailActivity
        }
     }
 
     override fun setupFragmentComponent() {
-        DaggerCityDetailComponent.builder()
+        DaggerContactDetailComponent.builder()
             .applicationComponent(AppApplication.getInstance()?.mComponent)
-            .cityDetailModule(CityDetailModule(this))
+            .contactDetailModule(ContactDetailModule(this))
             .build().inject(this)
     }
 }

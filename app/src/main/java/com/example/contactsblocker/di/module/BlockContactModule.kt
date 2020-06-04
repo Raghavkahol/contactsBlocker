@@ -6,12 +6,11 @@ import com.example.contactsblocker.ContactsDao
 import com.example.contactsblocker.di.scope.ActivityScoped
 import com.example.contactsblocker.module.home.citySearch.BlockedListViewModel
 import com.example.contactsblocker.module.home.citySearch.BlockedListViewModelFactory
-import com.example.contactsblocker.service.ApiService
 import dagger.Module
 import dagger.Provides
 
 @Module
-class CitySearchModule(private val activity: FragmentActivity) {
+class BlockContactModule(private val activity: FragmentActivity) {
     @ActivityScoped
     @Provides
     fun provideCitySearchViewModel(blockedListViewModelFactory: BlockedListViewModelFactory): BlockedListViewModel {

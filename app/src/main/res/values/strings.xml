@@ -1,17 +1,10 @@
 <resources>
     <string name="app_name">contactsBlocker</string>
-    <string name="label_add_city">Add City</string>
-    <string name="label_remove_city">Remove City</string>
     <string name="label_detail">Details</string>
     <string name="label_name">NAME</string>
     <string name="label_number">NUMBER</string>
-    <string name="label_country">COUNTRY</string>
-    <string name="label_timezone">TIMEZONE</string>
-    <string name="label_population">POPULATION</string>
     <string name="label_my_contacts">Contacts</string>
-    <string name="label_Search">Search</string>
     <string name="label_no_contacts_available">No Contacts Available</string>
-    <string name="label_search_cities">Search Cities</string>
     <string name="label_permission_denied">Permission Denied</string>
     <string name="label_block_list">Block List</string>
     <string name="label_add">Add</string>

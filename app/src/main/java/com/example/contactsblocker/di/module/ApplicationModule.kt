@@ -9,7 +9,7 @@ import com.example.contactsblocker.di.scope.ApplicationScoped
 import dagger.Module
 import dagger.Provides
 
-@Module(includes = arrayOf(ContextModule::class, ApiServiceModule::class))
+@Module(includes = arrayOf(ContextModule::class))
 class ApplicationModule {
     @Provides
     @ApplicationScoped

@@ -9,12 +9,12 @@ import com.example.contactsblocker.BaseRecyclerViewAdapter
 import com.example.contactsblocker.R
 import com.example.contactsblocker.model.Contact
 import com.example.contactsblocker.module.home.cityDetail.getContactDetailActivity
-import kotlinx.android.synthetic.main.city_card_layout.view.*
+import kotlinx.android.synthetic.main.home_card_layout.view.*
 
 class HomeAdapter( context: Context, mList: List<Contact>) : BaseRecyclerViewAdapter<Contact>(context, mList) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return HomeItemViewHolder(LayoutInflater.from(context).inflate(R.layout.city_card_layout, parent, false))
+        return HomeItemViewHolder(LayoutInflater.from(context).inflate(R.layout.home_card_layout, parent, false))
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

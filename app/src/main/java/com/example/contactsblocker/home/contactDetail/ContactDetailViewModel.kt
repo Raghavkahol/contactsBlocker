@@ -4,9 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.contactsblocker.AppConstants
 import com.example.contactsblocker.BaseViewModel
 import com.example.contactsblocker.ContactsDao
-import com.example.contactsblocker.ViewModelLifecycleState
 import com.example.contactsblocker.model.Contact
-import com.example.contactsblocker.service.ApiService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

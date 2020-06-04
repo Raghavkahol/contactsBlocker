@@ -6,7 +6,6 @@ import com.example.contactsblocker.contactsDB
 import com.example.contactsblocker.di.module.ApplicationModule
 import com.example.contactsblocker.di.qualifier.ApplicationContext
 import com.example.contactsblocker.di.scope.ApplicationScoped
-import com.example.contactsblocker.service.ApiService
 import dagger.Component
 
 @ApplicationScoped
@@ -14,8 +13,6 @@ import dagger.Component
 interface ApplicationComponent {
     @get:ApplicationContext
     val context: Context
-
-    val apiService : ApiService
 
     fun getContactsDataBase(): contactsDB
 
