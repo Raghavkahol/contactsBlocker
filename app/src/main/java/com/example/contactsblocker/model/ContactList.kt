@@ -8,15 +8,11 @@ data class ContactList( @PrimaryKey(autoGenerate = true)
                         val id: Int? = null,
                         val contacts : ArrayList<Contact>)
 @Entity
-class Contact(
+data class Contact(
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
     var name: String? = null,
     var number: String? = null,
     @ColumnInfo(name = "is_block")
     var isBlock : Boolean? = null
-) {
-    fun getRegex() {
-
-    }
-}
+)
