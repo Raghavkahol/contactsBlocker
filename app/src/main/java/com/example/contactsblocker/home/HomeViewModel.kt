@@ -43,7 +43,7 @@ class HomeViewModel(private val contactsDao: ContactsDao) : BaseViewModel() {
         val nameList = arrayListOf<Contact>()
         val cr: ContentResolver = contentResolver
         val cur : Cursor? = cr.query(ContactsContract.Contacts.CONTENT_URI,
-            null, null, null, null);
+            null, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME+" ASC");
         if (cur?.getCount() != 0) {
             while (cur?.moveToNext() == true) {
                 val id : String = cur.getString(
@@ -59,9 +59,8 @@ class HomeViewModel(private val contactsDao: ContactsDao) : BaseViewModel() {
                     val pCur = cr.query(
                         ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
                         null,
-                        ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?", arrayOf(id), null
-                    )
-                    var phoneNo : String? = null
+                        ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?", arrayOf(id), null )
+                    var phoneNo : String = ""
                     //Just take one number
                     while (pCur?.moveToNext() == true) {
                         phoneNo = pCur.getString(

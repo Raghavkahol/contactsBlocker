@@ -9,10 +9,9 @@ data class ContactList( @PrimaryKey(autoGenerate = true)
                         val contacts : ArrayList<Contact>)
 @Entity
 data class Contact(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int? = null,
     var name: String? = null,
-    var number: String? = null,
+    @PrimaryKey
+    var number: String = "",
     @ColumnInfo(name = "is_block")
     var isBlock : Boolean? = null
 )

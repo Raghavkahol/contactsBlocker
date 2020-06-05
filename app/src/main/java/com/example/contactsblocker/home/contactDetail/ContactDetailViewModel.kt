@@ -15,9 +15,9 @@ class ContactDetailViewModel(private val contactsDao: ContactsDao) : BaseViewMod
     var isBlock = MutableLiveData<Boolean>().apply { false }
     private lateinit var contact : Contact
 
-    fun fetchContactDetail(id: Int?) {
+    fun fetchContactDetail(number: String?) {
         bindDisposable {
-            contactsDao.getContact(id)
+            contactsDao.getContact(number)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
@@ -49,6 +49,7 @@ class ContactDetailViewModel(private val contactsDao: ContactsDao) : BaseViewMod
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
+
                 }, {
                 })
         }

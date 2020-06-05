@@ -32,7 +32,7 @@ class CitySearchAdapter(context: Context,  mList: List<Contact>) :  BaseRecycler
 
         override fun onClick(view : View?) {
             val contact: Contact? = mList?.get(adapterPosition)
-            context.startActivity(getContactDetailActivity(context, contact?.id))
+            context.startActivity(getContactDetailActivity(context, contact?.number))
         }
     }
     }

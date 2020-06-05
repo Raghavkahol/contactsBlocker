@@ -13,9 +13,9 @@ import com.example.contactsblocker.di.component.DaggerContactDetailComponent
 import com.example.contactsblocker.di.module.ContactDetailModule
 import javax.inject.Inject
 
-fun getContactDetailActivity(context: Context, cityName : Int?): Intent {
+fun getContactDetailActivity(context: Context, contactName : String?): Intent {
     val intent  = Intent(context, ContactDetailActivity::class.java)
-    intent.putExtra(AppConstants.ID, cityName)
+    intent.putExtra(AppConstants.ID, contactName)
     return intent
 }
 
@@ -30,7 +30,7 @@ class ContactDetailActivity : BaseViewModelActivity() {
         setupFragmentComponent()
         initComponents()
         setToolbar()
-        contactDetailViewModel.fetchContactDetail(intent.getIntExtra(AppConstants.ID, 1))
+        contactDetailViewModel.fetchContactDetail(intent.getStringExtra(AppConstants.ID))
     }
 
     fun initComponents() {

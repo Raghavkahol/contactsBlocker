@@ -25,8 +25,8 @@ interface ContactsDao {
     @Query("SELECT * from Contact ORDER BY name")
     fun getcontactListFromDB(): Single<List<Contact>>
 
-    @Query("SELECT * FROM Contact where id = :id")
-    fun getContact(id : Int?): Single<Contact>
+    @Query("SELECT * FROM Contact where number = :number")
+    fun getContact(number : String?): Single<Contact>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertContact(contact: Contact): Completable

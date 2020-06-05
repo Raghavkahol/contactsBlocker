@@ -30,7 +30,7 @@ class HomeAdapter( context: Context, mList: List<Contact>) : BaseRecyclerViewAda
 
         override fun onClick(view : View?) {
             val contact : Contact? = mList?.get(adapterPosition)
-            context.startActivity(getContactDetailActivity(context, contact?.id))
+            context.startActivity(getContactDetailActivity(context, contact?.number))
         }
     }
 }
