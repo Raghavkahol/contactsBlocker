@@ -22,6 +22,7 @@ class HomeViewModel(private val contactsDao: ContactsDao) : BaseViewModel() {
 
 
     fun getAllContacts(contentResolver : ContentResolver) {
+        isDataUnavalable.value = true
         bindDisposable {
             contactsDao.contactsCount()
                 .subscribeOn(Schedulers.io())
@@ -78,6 +79,7 @@ class HomeViewModel(private val contactsDao: ContactsDao) : BaseViewModel() {
                 }
 
             }
+            isDataUnavalable.value = false
             contacts.addAll(nameList)
             insertInDB(nameList)
         }
@@ -90,11 +92,13 @@ class HomeViewModel(private val contactsDao: ContactsDao) : BaseViewModel() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
+                    isDataUnavalable.value = false
                     with(contacts) {
                         clear()
                         addAll(it)
                     }
                 }, {
+                    isDataUnavalable.value = false
                     it.printStackTrace()
                 })
         }
