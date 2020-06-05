@@ -79,10 +79,11 @@ class BlockedListActivity : BaseViewModelActivity(), View.OnClickListener{
     }
 
     override fun onClick(view : View?) {
+        //Can use a custome alert dialog for Business Required UI
         val builder : AlertDialog.Builder =  AlertDialog.Builder(this);
         builder.setTitle(R.string.label_add_to_block_list);
 
-        val input : EditText =  EditText(this)
+        val input =  EditText(this)
         input.setInputType(InputType.TYPE_CLASS_TEXT)
         input.setHint(R.string.hint_block_number)
         builder.setView(input);
@@ -90,7 +91,7 @@ class BlockedListActivity : BaseViewModelActivity(), View.OnClickListener{
             if(input.getText().length == AppConstants.NUMBER_SIZE) {
                 blockedListViewModel.addToBlockList(input.getText().toString())
             } else {
-                Toast.makeText(this, " Please enter a valid 10 digit number", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, R.string.label_enter_a_valid_num, Toast.LENGTH_LONG).show()
             }
         }
 

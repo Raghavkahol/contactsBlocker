@@ -25,7 +25,7 @@ class HomeActivity : BaseViewModelActivity() {
     lateinit var homeViewModel: HomeViewModel
     lateinit var binding: com.example.contactsblocker.databinding.ActivityHomeBinding
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
@@ -34,7 +34,7 @@ class HomeActivity : BaseViewModelActivity() {
         checkForPermissions()
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
     fun checkForPermissions() {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_CONTACTS)
             == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_PHONE_STATE)
@@ -49,7 +49,7 @@ class HomeActivity : BaseViewModelActivity() {
     }
 
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
     fun requestPermission() {
         if (ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED
             || ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_DENIED ||  ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_DENIED

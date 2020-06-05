@@ -433,6 +433,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../hms_android/hmsapp/src/main/res/values/strings.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../keepTruckin/app/src/main/java/com/example/keeptruckin/CitiesDao.kt">
           <value>
             <set />

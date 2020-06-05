@@ -3,11 +3,9 @@ package com.example.contactsblocker
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.telecom.TelecomManager
 import android.telephony.TelephonyManager
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import com.example.contactsblocker.di.component.DaggerApplicationComponent
 import com.example.contactsblocker.di.module.ApplicationModule
 import com.example.contactsblocker.di.module.ContextModule
@@ -19,7 +17,6 @@ import io.reactivex.schedulers.Schedulers
 class IncomingCalReceiver : BroadcastReceiver() {
 
     val compositeDisposable: CompositeDisposable = CompositeDisposable()
-    @RequiresApi(Build.VERSION_CODES.P)
     override fun onReceive(context : Context, intent : Intent?) {
         val component = DaggerApplicationComponent.builder().contextModule(ContextModule(context)).applicationModule(ApplicationModule()).build()
         if (TelephonyManager.ACTION_PHONE_STATE_CHANGED != intent?.action) {
@@ -43,7 +40,8 @@ class IncomingCalReceiver : BroadcastReceiver() {
                                 if(it.number == phoneNumber) {
                                 val telecomManager = context.getSystemService(Context.TELECOM_SERVICE) as TelecomManager
                                 telecomManager.endCall()
-                                Toast.makeText(context, "Call from Blocked number $phoneNumber rejected", Toast.LENGTH_LONG).show()
+                                //Or can use notification too, but Notification isn't a good way because it will show x notifications for x calls
+                                Toast.makeText(context, context.getString(R.string.label_call_rejected,phoneNumber), Toast.LENGTH_LONG).show()
                             }
                             }
 

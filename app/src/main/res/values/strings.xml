@@ -13,4 +13,6 @@
     <string name="label_cancel">Cancel</string>
     <string name="label_add_to_block_list">Block Number</string>
     <string name="hint_block_number">Add number here</string>
+    <string name="label_enter_a_valid_num">Add a Valid Number</string>
+    <string name="label_call_rejected">Call from %s rejected</string>
 </resources>
