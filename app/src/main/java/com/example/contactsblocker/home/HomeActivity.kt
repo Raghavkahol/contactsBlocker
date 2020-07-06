@@ -39,10 +39,11 @@ class HomeActivity : BaseViewModelActivity() {
             == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE)
             == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ANSWER_PHONE_CALLS)
             == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_CALL_LOG)
+            == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
             == PackageManager.PERMISSION_GRANTED) {
-            homeViewModel.getAllContacts(contentResolver);
+            homeViewModel.getAllContacts(contentResolver)
         } else {
-            requestPermission();
+            requestPermission()
         }
     }
 
@@ -52,8 +53,8 @@ class HomeActivity : BaseViewModelActivity() {
         if (ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED
             || ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_DENIED ||  ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_DENIED
             ||  ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_DENIED
-            ||  ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.ANSWER_PHONE_CALLS) != PackageManager.PERMISSION_DENIED) {
-            ActivityCompat.requestPermissions(this, arrayOf<String>(android.Manifest.permission.READ_CONTACTS,Manifest.permission.READ_PHONE_STATE, Manifest.permission.CALL_PHONE, Manifest.permission.READ_CALL_LOG, Manifest.permission.ANSWER_PHONE_CALLS), 1)
+            ||  ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.ANSWER_PHONE_CALLS) != PackageManager.PERMISSION_DENIED ||ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_DENIED ) {
+            ActivityCompat.requestPermissions(this, arrayOf<String>(android.Manifest.permission.READ_CONTACTS,Manifest.permission.READ_PHONE_STATE, Manifest.permission.CALL_PHONE, Manifest.permission.READ_CALL_LOG, Manifest.permission.ANSWER_PHONE_CALLS, Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
         } else {
             homeViewModel.getAllContacts(contentResolver)
         }
@@ -71,7 +72,7 @@ class HomeActivity : BaseViewModelActivity() {
     }
 
     fun initComponents() {
-        getSupportActionBar()?.setDisplayShowTitleEnabled(false);
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         homeViewModel.apply {
             binding.viewModel = this
             bindViewModel(this)

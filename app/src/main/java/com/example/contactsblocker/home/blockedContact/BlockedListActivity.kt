@@ -80,21 +80,21 @@ class BlockedListActivity : BaseViewModelActivity(), View.OnClickListener{
 
     override fun onClick(view : View?) {
         //Can use a custome alert dialog for Business Required UI
-        val builder : AlertDialog.Builder =  AlertDialog.Builder(this);
-        builder.setTitle(R.string.label_add_to_block_list);
+        val builder : AlertDialog.Builder =  AlertDialog.Builder(this)
+        builder.setTitle(R.string.label_add_to_block_list)
 
         val input =  EditText(this)
-        input.setInputType(InputType.TYPE_CLASS_TEXT)
+        input.inputType = InputType.TYPE_CLASS_TEXT
         input.setHint(R.string.hint_block_number)
-        builder.setView(input);
+        builder.setView(input)
         builder.setPositiveButton(R.string.label_add){dialogInterface, which ->
-            if(input.getText().length == AppConstants.NUMBER_SIZE) {
-                blockedListViewModel.addToBlockList(input.getText().toString())
+            if(input.text.length == AppConstants.NUMBER_SIZE) {
+                blockedListViewModel.addToBlockList(input.text.toString())
             } else {
                 Toast.makeText(this, R.string.label_enter_a_valid_num, Toast.LENGTH_LONG).show()
             }
         }
 
-        builder.show();
+        builder.show()
     }
 }

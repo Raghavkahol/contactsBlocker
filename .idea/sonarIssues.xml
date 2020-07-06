@@ -3,6 +3,11 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="/Dummy.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../android-call-blocker/app/build/generated/source/apt/debug/com/alexazhu/callblocker/blockednumber/BlockedNumberDao_Impl.java">
           <value>
             <set />
@@ -18,7 +23,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/google-services.json">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/DownloadService.java">
           <value>
             <set />
           </value>
@@ -69,6 +84,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/example/contactsblocker/ContactsDao.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/example/contactsblocker/DownloadReceiver.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/example/contactsblocker/DownloadService.java">
           <value>
             <set />
           </value>
@@ -248,6 +273,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/example/contactsblocker/home/MainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/example/contactsblocker/home/blockedContact/BlockedListActivity.kt">
           <value>
             <set />
@@ -398,6 +428,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_request_permissions.xml">
           <value>
             <set />
@@ -433,12 +468,137 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../hms_android/hmsapp/src/main/java/com/oyo/hmsapp/data/dao/BookingsDao.java">
           <value>
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../hms_android/hmsapp/src/main/res/layout/qualifier_detail_activity.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../hms_android/hmsapp/src/main/res/values/strings.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/java/com/example/homeactivity/LogInActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/java/com/example/homeactivity/MainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/java/com/example/homeactivity/ui/HomeActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/java/com/example/homeactivity/ui/HomeActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/java/com/example/homeactivity/ui/TutionDetails.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/java/com/example/homeactivity/ui/home/HomeFragment.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/java/com/example/homeactivity/ui/home/TutionCardAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/java/com/example/homeactivity/ui/home/TutorFragment.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/res/drawable/ic_bg_border.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/res/drawable/ic_bg_button.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/res/layout/activity_home2.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/res/layout/activity_login.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/res/layout/activity_tution_details.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/res/layout/content_tution_details.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/res/layout/fragment_dashboard.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/res/layout/fragment_home.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/res/layout/fragment_notifications.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/res/layout/tution_card.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/res/layout/tutor_fragment.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/res/menu/bottom_nav_menu.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/res/navigation/mobile_navigation.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../joinMe/AndroidStudioProjects/HomeActivity/app/src/main/res/values/colors.xml">
           <value>
             <set />
           </value>

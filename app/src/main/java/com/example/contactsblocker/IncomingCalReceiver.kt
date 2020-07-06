@@ -35,8 +35,8 @@ class IncomingCalReceiver : BroadcastReceiver() {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
                             it.forEach {
-                                it.number?.trim()
-                                it.number = it.number?.replace("\\s".toRegex(), "")
+                                it.number.trim()
+                                it.number = it.number.replace("\\s".toRegex(), "")
                                 if(it.number == phoneNumber) {
                                 val telecomManager = context.getSystemService(Context.TELECOM_SERVICE) as TelecomManager
                                 telecomManager.endCall()

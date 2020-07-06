@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "674897487490",
+    "firebase_url": "https://contactsblocker.firebaseio.com",
+    "project_id": "contactsblocker",
+    "storage_bucket": "contactsblocker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674897487490:android:153ef31ba506f6ade6f69b",
+        "android_client_info": {
+          "package_name": "com.example.contactsblocker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "674897487490-v9vmq6fldv8ufubj1hju0sidj1ou0igq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7Rng1MYi9uKOGHG5pRInIGPsi02EAHFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "674897487490-v9vmq6fldv8ufubj1hju0sidj1ou0igq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

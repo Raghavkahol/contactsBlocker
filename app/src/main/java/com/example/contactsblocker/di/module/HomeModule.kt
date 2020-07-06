@@ -20,6 +20,6 @@ class HomeModule(private val activity: FragmentActivity) {
     @ActivityScoped
     @Provides
     fun provideHomeViewModelFactory(contactsDao: ContactsDao): HomeViewModelFactory{
-        return HomeViewModelFactory(contactsDao);
+        return HomeViewModelFactory(contactsDao)
     }
 }

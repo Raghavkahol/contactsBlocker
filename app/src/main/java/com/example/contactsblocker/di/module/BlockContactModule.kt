@@ -20,6 +20,6 @@ class BlockContactModule(private val activity: FragmentActivity) {
     @ActivityScoped
     @Provides
     fun provideCitySearchViewModelFactory(contactsDao: ContactsDao): BlockedListViewModelFactory{
-        return BlockedListViewModelFactory(contactsDao);
+        return BlockedListViewModelFactory(contactsDao)
     }
 }

@@ -20,6 +20,6 @@ class ContactDetailModule(private val activity: FragmentActivity) {
     @ActivityScoped
     @Provides
     fun provideCityDetailViewModelFactory(contactsDao: ContactsDao): ContactDetailViewModelFactory {
-        return ContactDetailViewModelFactory(contactsDao);
+        return ContactDetailViewModelFactory(contactsDao)
     }
 }

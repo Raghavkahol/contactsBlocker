@@ -15,4 +15,8 @@
     <string name="hint_block_number">Add number here</string>
     <string name="label_enter_a_valid_num">Add a Valid Number</string>
     <string name="label_call_rejected">Call from %s rejected</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

@@ -22,7 +22,7 @@ class HomeViewModel(private val contactsDao: ContactsDao) : BaseViewModel() {
 
 
     fun getAllContacts(contentResolver : ContentResolver) {
-        isDataUnavalable.value = true
+       // isDataUnavalable.value = true
         bindDisposable {
             contactsDao.contactsCount()
                 .subscribeOn(Schedulers.io())
@@ -44,13 +44,13 @@ class HomeViewModel(private val contactsDao: ContactsDao) : BaseViewModel() {
         val nameList = arrayListOf<Contact>()
         val cr: ContentResolver = contentResolver
         val cur : Cursor? = cr.query(ContactsContract.Contacts.CONTENT_URI,
-            null, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME+" ASC");
-        if (cur?.getCount() != 0) {
+            null, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME+" ASC")
+        if (cur?.count != 0) {
             while (cur?.moveToNext() == true) {
                 val id : String = cur.getString(
-                    cur.getColumnIndex(ContactsContract.Contacts._ID));
+                    cur.getColumnIndex(ContactsContract.Contacts._ID))
                 val name : String = cur.getString(cur.getColumnIndex(
-                    ContactsContract.Contacts.DISPLAY_NAME));
+                    ContactsContract.Contacts.DISPLAY_NAME))
                 if (cur.getInt(
                         cur.getColumnIndex(
                             ContactsContract.Contacts.HAS_PHONE_NUMBER
@@ -83,7 +83,7 @@ class HomeViewModel(private val contactsDao: ContactsDao) : BaseViewModel() {
             contacts.addAll(nameList)
             insertInDB(nameList)
         }
-        cur?.close();
+        cur?.close()
     }
 
     private fun getContactsFromDB() {
